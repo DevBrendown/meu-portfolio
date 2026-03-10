@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brendow Rodrigues | Desenvolvimento Web & Automação Corporativa</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo"><span>Dev</span>Brendown</a>
+            
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#clientes">Clientes</a></li>
+                    <li><a href="https://wa.me/5545999767851?text=Olá,%20Brendow!%20Vim%20pelo%20seu%20portfólio%20e%20queria%20falar%20sobre%20um%20projeto." target="_blank" class="btn btn-outline">Fale Comigo</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="sobre" class="hero-section">
+        <div class="container hero-container"> 
+            <div class="hero-content">
+                <h1>Transformo processos em <span class="highlight">soluções web inteligentes</span>.</h1>
+                <p>Desenvolvimento de sistemas web, automação de processos e integrações com Google Sheets (Apps Script). Código limpo, interfaces funcionais e foco em eficiência e resultados reais.</p>
+                <a href="https://wa.me/5545999767851?text=Olá,%20Brendow!%20Vim%20pelo%20seu%20portfólio%20e%20queria%20falar%20sobre%20um%20projeto." target="_blank" class="btn btn-primary">Iniciar um Projeto</a>
+            </div>
+
+            <div class="hero-image">
+                <img src="assets/img/my-picture.png" alt="Minha foto com um fundo laranja">
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos" class="servicos-section section-padding bg-darker">
+        <div class="container">
+            <h2 class="section-title">Meus Serviços</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="icon-box">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Desenvolvimento Web</h3>
+                    <p>Criação de sites e landing pages modernas, responsivas e otimizadas para desempenho e conversão.</p>
+                </div>
+
+                <div class="card">
+                    <div class="icon-box">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Sistemas Web</h3>
+                    <p>Desenvolvimento de aplicações web personalizadas para gestão, organização de dados e soluções sob medida para o seu negócio.</p>
+                </div>
+
+                <div class="card">
+                    <div class="icon-box">
+                        <i class="fas fa-gears"></i>
+                    </div>
+                    <h3>Automação & Integração</h3>
+                    <p>Automação de processos e integrações com Google Sheets, dashboards e fluxos digitais para aumentar produtividade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projetos" class="projetos-section section-padding">
+        <div class="container">
+            <h2 class="section-title hidden">Projetos em Destaque</h2>
+            <div class="cards-grid">
+                <div class="card-projeto hidden">
+                    <img src="assets/img/evolu-soft.png" alt="A Evolução do Desenvolvimento de Software" class="projeto-img">
+                    <div class="projeto-info">
+                        <h3>Evolução do Software</h3>
+                        <p>Site informativo que apresenta a evolução do desenvolvimento de software ao longo do tempo, destacando tecnologias, metodologias e marcos importantes da transformação digital.</p>
+                        <a href="https://devbrendown.github.io/evolucaosoftware/" class="btn btn-project" target="_blank">Acessar Projeto</a>
+                    </div>
+                </div>
+                <div class="card-projeto hidden">
+                    <img src="assets/img/campo-cidade.png" alt="Festejando a Conexão Campo-Cidade" class="projeto-img">
+                    <div class="projeto-info">
+                        <h3>Festejando a Conexão Campo-Cidade</h3>
+                        <p>Site estático desenvolvido em HTML e CSS para apresentação de conteúdos informativos sobre eventos voltados à integração entre comunidades rurais e urbanas, priorizando organização visual e acessibilidade.</p>
+                        <a href="https://agrinho-programacao2025-red.vercel.app" class="btn btn-project" target="_blank">Acessar Projeto</a>
+                    </div>
+                </div>
+                <div class="card-projeto hidden">
+                    <img src="assets/img/linguadev.png" alt="LinguaDev" class="projeto-img">
+                    <div class="projeto-info">
+                        <h3>LinguaDev</h3>
+                        <p>Website desenvolvido no formato de cards interativos para apresentar e explicar diferentes linguagens de programação, destacando características, aplicações e conceitos principais de forma visual e organizada.</p>
+                        <a href="https://devbrendown.github.io/linguadev/" class="btn btn-project" target="_blank">Acessar Projeto</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="clientes" class="clientes-section section-padding bg-darker">
+        <div class="container">
+            <h2 class="section-title hidden">O que dizem</h2>
+            <div class="cards-grid">
+                <div class="card depoimento-card hidden">
+                    <div class="estrelas">★★★★★</div>
+                    <p class="comentario">"O desenvolvimento do sistema facilitou muito nossa rotina interna. Tudo ficou mais organizado e rápido de acessar. Superou nossas expectativas."</p>
+                    <span class="cliente-nome">Lucas Andrade — Empresário</span>
+                </div>
+                <div class="card depoimento-card hidden">
+                    <div class="estrelas">★★★★★</div>
+                    <p class="comentario">"Precisávamos automatizar processos que eram totalmente manuais, e a solução entregue trouxe ganho real de produtividade. Atendimento muito profissional."</p>
+                    <span class="cliente-nome">Carla Menezes — Analista Administrativa</span>
+                </div>
+                <div class="card depoimento-card hidden">
+                    <div class="estrelas">★★★★★</div>
+                    <p class="comentario">"O site ficou moderno, rápido e exatamente como imaginávamos. O suporte durante todo o projeto fez muita diferença."</p>
+                    <span class="cliente-nome">Renato Oliveira — Consultor Digital</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+    <div class="container">
+        <div class="social-links">
+            <a href="https://github.com/DevBrendown" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/brendow-rodrigues-360b172a6/" target="_blank">LinkedIn</a>
+            <a href="https://www.instagram.com/brendown.png/" target="_blank">Instagram</a>
+        </div>
+        <p>&copy; 2026 Brendow Rodrigues. Todos os direitos reservados.</p>
+    </div>
+</footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
