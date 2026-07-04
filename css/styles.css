@@ -446,10 +446,10 @@ img {
 
 
 /* ==========================================================================
-   5. CARDS, SERVIÇOS E PROJETOS
+   5. CARDS, SERVIÇOS E NOVO CARROSSEL DE PROJETOS 3D
    ========================================================================== */
 
-/* Grid Geral de Cards */
+/* Grid Geral de Cards (Serviços) */
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -500,79 +500,161 @@ img {
     color: var(--accent-blue);
 }
 
-/* Card de Projeto Individual */
-.card-projeto {
-    background-color: var(--card-bg);
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
+/* --- NOVO DESIGN: CARROSSEL DE PROJETOS 3D EM PROFUNDIDADE --- */
 
-.card-projeto:hover .projeto-img {
-    transform: scale(1.05);
-}
-
-/* Imagem do Projeto */
-.projeto-img {
+.carrossel-3d-container {
+    position: relative;
     width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-bottom: 1px solid var(--border-color);
-    display: block;
-    transition: transform 0.3s ease;
-}
-
-/* Detalhes do Projeto */
-.projeto-info {
-    padding: 25px;
-    background-color: var(--card-bg);
-}
-
-.projeto-info h3 {
-    margin-bottom: 15px;
-    font-size: 1.25rem;
-}
-
-/* Links Sociais/Ações do Projeto */
-.projeto-links {
+    max-width: 1100px;
+    height: 480px; 
+    margin: 0 auto;
+    overflow: visible; /* Garante que os cards recolhidos nas pontas apareçam */
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-top: 5px;
+    justify-content: center;
 }
 
-/* Ícones de ação nos projetos */
-.btn-icon {
-    font-size: 1.4rem;
-    color: var(--text-muted);
-    transition: 0.3s ease;
+.carrossel-3d-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px; /* Cria a perspectiva realista para rotação Y */
 }
 
-.btn-icon:hover {
-    color: var(--accent-blue);
-    transform: translateY(-3px);
-}
-
-/* Botão de detalhes do modal do projeto */
-.btn-open-modal {
-    background: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--text-light);
-    padding: 6px 16px;
+/* Estrutura do Card 3D individual */
+.card-projeto-3d {
+    position: absolute;
+    width: 460px;
+    height: 390px;
+    background: rgba(26, 26, 26, 0.65);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    font-family: inherit;
-    transition: 0.3s ease;
-    margin-left: auto;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 22px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    
+    /* Suaviza as transições tridimensionais */
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), 
+                opacity 0.6s ease, 
+                border-color 0.4s,
+                box-shadow 0.6s ease;
+    
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+    transform: translateX(0) scale(0.5);
 }
 
-.btn-open-modal:hover {
+/* --- CLASSES DINÂMICAS DOS ESTADOS DO CARROSSEL 3D --- */
+
+/* Centralizado / Principal / Grande */
+.card-projeto-3d.active {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 10;
+    transform: translateX(0) scale(1) rotateY(0deg);
     border-color: var(--accent-blue);
-    color: var(--accent-blue);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(246, 128, 59, 0.2);
+}
+
+/* Recuado para trás na Esquerda */
+.card-projeto-3d.prev {
+    opacity: 0.35;
+    pointer-events: auto;
+    z-index: 5;
+    transform: translateX(-55%) scale(0.78) rotateY(18deg);
+}
+
+/* Recuado para trás na Direita */
+.card-projeto-3d.next {
+    opacity: 0.35;
+    pointer-events: auto;
+    z-index: 5;
+    transform: translateX(55%) scale(0.78) rotateY(-18deg);
+}
+
+/* Efeito Hover do mouse em cima do card ativo (Foco Total) */
+.card-projeto-3d.active:hover {
+    transform: translateX(0) scale(1.02) translateY(-5px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), 0 0 30px rgba(246, 128, 59, 0.3);
+    border-color: var(--accent-hover);
+}
+
+/* Elementos internos do Card 3D */
+.projeto-img-3d {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    border-radius: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.projeto-info-3d {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.projeto-info-3d h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 5px;
+}
+
+.projeto-info-3d p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all 0.3s ease;
+}
+
+.card-projeto-3d.active:hover .projeto-info-3d p {
+    -webkit-line-clamp: unset;
+    overflow: visible;
+    color: var(--text-light);
+}
+
+.projeto-links-3d {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+/* Botão Acessar Fixo na Base */
+.btn-acessar-projeto {
+    background-color: var(--accent-blue);
+    color: #fff;
+    font-weight: 700;
+    font-family: inherit;
+    font-size: 0.9rem;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 10px rgba(246, 128, 59, 0.2);
+}
+
+.btn-acessar-projeto:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
 }
 
 
@@ -1045,6 +1127,12 @@ img {
         margin-top: 60px;
         width: 100%;
     }
+    
+    /* Trata tamanho do card 3D em telas médias */
+    .card-projeto-3d {
+        width: 380px;
+        height: 360px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1119,4 +1207,22 @@ img {
     .gravitating-icons .orbiting-icon:nth-child(5) { transform: rotate(205.6deg)  translateX(132.5px) rotate(-205.6deg)  !important; }
     .gravitating-icons .orbiting-icon:nth-child(6) { transform: rotate(257deg)    translateX(132.5px) rotate(-257deg)    !important; }
     .gravitating-icons .orbiting-icon:nth-child(7) { transform: rotate(308.4deg)  translateX(132.5px) rotate(-308.4deg)  !important; }
+
+    /* Reduz o deslocamento do 3D no mobile para não cortar nas bordas */
+    .carrossel-3d-container {
+        height: 420px;
+    }
+    .card-projeto-3d {
+        width: 290px;
+        height: 340px;
+    }
+    .card-projeto-3d.prev {
+        transform: translateX(-35%) scale(0.7) rotateY(10deg);
+    }
+    .card-projeto-3d.next {
+        transform: translateX(35%) scale(0.7) rotateY(-10deg);
+    }
+    .projeto-img-3d {
+        height: 160px;
+    }
 }

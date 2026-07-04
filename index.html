@@ -52,7 +52,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="https://wa.me/5545999767851?text=Olá,%20Brendow!%20Vim%20pelo%20seu%20portfólio%20e%20queria%20falar%20sobre%20um%20projeto."
                                     target="_blank">Fale Comigo</a></li>
-                            <li><a href="https://forms.gle/yeTMwwR6QqSvng2q6" target="_blank">Me Avalie</a></li>
+                            <li><a href="#avaliacao">Me Avalie</a></li>
                             <li><a href="/assets/docs/Currículo.pdf" target="_blank">Meu Currículo</a></li>
                         </ul>
                     </li>
@@ -145,12 +145,23 @@
         </div>
     </section>
 
-    <section id="projetos" class="projetos-section section-padding">
-        <div class="container">
-            <h2 class="section-title hidden">Projetos em Destaque</h2>
-            <div class="cards-grid" id="projetos-container">
-            </div>
+    <section id="projetos" style="position: relative; padding: 60px 0;">
+
+        <h2 class="section-title">Meus Projetos em Destaque</h2>
+        
+        <div class="carrossel-3d-container">
+            <div class="carrossel-3d-track" id="projetos-container"></div>
         </div>
+
+        <div class="controles-projetos" style="text-align: center; margin-top: 20px;">
+            <button class="btn-projeto-prev"
+                style="background:none; border:1px solid var(--accent-blue); color:#fff; padding:10px 20px; margin-right:15px; cursor:pointer; border-radius:5px;"><i
+                    class="fas fa-chevron-left"></i></button>
+            <button class="btn-projeto-next"
+                style="background:none; border:1px solid var(--accent-blue); color:#fff; padding:10px 20px; cursor:pointer; border-radius:5px;"><i
+                    class="fas fa-chevron-right"></i></button>
+        </div>
+
     </section>
 
     <div id="project-modal" class="modal">
@@ -187,13 +198,14 @@
         <div class="container">
             <div class="social-links">
                 <a href="https://github.com/DevBrendown/" target="_blank" class="social-btn github">
-                GitHub
+                    GitHub
                 </a>
-                <a href="https://www.linkedin.com/in/brendow-rodrigues-360b172a6/" target="_blank" class="social-btn linkedin">
-                LinkedIn
+                <a href="https://www.linkedin.com/in/brendow-rodrigues-360b172a6/" target="_blank"
+                    class="social-btn linkedin">
+                    LinkedIn
                 </a>
                 <a href="https://www.instagram.com/brendown.png" target="_blank" class="social-btn instagram">
-                Instagram
+                    Instagram
                 </a>
             </div>
             <br>
@@ -203,25 +215,25 @@
 
     <script src="js/main.js"></script>
     <script>
-    // Bloqueia o clique com o botão direito do mouse
-    document.addEventListener('contextmenu', event => event.preventDefault());
+        // Bloqueia o clique com o botão direito do mouse
+        document.addEventListener('contextmenu', event => event.preventDefault());
 
-    // Bloqueia atalhos de teclado específicos
-    document.addEventListener('keydown', function(event) {
-        // Bloqueia Ctrl+C (Copiar)
-        if (event.ctrlKey && event.key === 'c') {
-            event.preventDefault();
-        }
-        // Bloqueia Ctrl+U (Ver código fonte)
-        if (event.ctrlKey && event.key === 'u') {
-            event.preventDefault();
-        }
-        // Bloqueia Ctrl+Shift+I ou F12 (Tentar abrir o Elementos/F12)
-        if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
-            event.preventDefault();
-        }
-    });
-</script>
+        // Bloqueia atalhos de teclado específicos
+        document.addEventListener('keydown', function (event) {
+            // Bloqueia Ctrl+C (Copiar)
+            if (event.ctrlKey && event.key === 'c') {
+                event.preventDefault();
+            }
+            // Bloqueia Ctrl+U (Ver código fonte)
+            if (event.ctrlKey && event.key === 'u') {
+                event.preventDefault();
+            }
+            // Bloqueia Ctrl+Shift+I ou F12 (Tentar abrir o Elementos/F12)
+            if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
+                event.preventDefault();
+            }
+        });
+    </script>
 </body>
 
 </html>

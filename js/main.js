@@ -4,10 +4,13 @@ const LINK_PROJETOS = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTY4kVmAg
 let currentIndex = 0;
 let cards = [];
 let track = null;
+let projetoIndexAtual = 0;
+let listaDeProjetosCards = [];
 
 document.addEventListener('DOMContentLoaded', () => {
     carregarDepoimentosDaPlanilha();
     carregarProjetosDaPlanilha();
+    inicializarEventosModaisEObserver(); // Ativa as funções para fechar e escutar cliques do modal ao iniciar
 
     const textElement = document.getElementById('typing-text');
     const phrases = ["soluções web inteligentes.", "automações eficientes.", "interfaces modernas.", "resultados reais."];
@@ -83,13 +86,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// FUNÇÃO GLOBAL RESPONSÁVEL POR INJETAR OS DADOS NO SEU MODAL E ABRI-LO
+function abrirModalProjeto(titulo, descricao, siteUrl, githubUrl) {
+    const modal = document.getElementById('project-modal');
+    if (!modal) return;
+    
+    document.getElementById('modal-title').innerText = titulo;
+    document.getElementById('modal-description').innerText = descricao;
+    document.getElementById('modal-site').href = siteUrl;
+    document.getElementById('modal-github').href = githubUrl;
+    
+    modal.style.display = 'flex';
+}
+
 function parsearLinhaCSV(linha) {
     const colunas = [];
     let colunaAtual = '';
     let dentroDeAspas = false;
 
     for (let i = 0; i < linha.length; i++) {
-        const char = line = linha[i];
+        const char = linha[i]; // Correção do bug de atribuição dupla (line = linha[i])
         if (char === '"') {
             dentroDeAspas = !dentroDeAspas;
         } else if (char === ',' && !dentroDeAspas) {
@@ -167,7 +183,7 @@ function carregarProjetosDaPlanilha() {
 
                 if (columns.length >= 5) {
                     const status = columns[5] ? columns[5].toLowerCase() : 'inativo';
-                    if (status !== 'ativo') return; 
+                    if (status !== 'ativo') return;
 
                     const titulo = columns[0];
                     const desc = columns[1];
@@ -175,25 +191,71 @@ function carregarProjetosDaPlanilha() {
                     const github = columns[3];
                     const imagem = columns[4] || 'assets/img/projetos/default.png';
 
+                    // Limpa quebras de linha e aspas para o parâmetro não quebrar a string do Javascript
+                    const descTratada = desc.replace(/'/g, "\\'").replace(/\r?\n/g, " ");
+
+                    // Alterado margin-bottom de 15px para 5px para subir os botões!
                     container.innerHTML += `
-                        <div class="card-projeto hidden" data-titulo="${titulo}" data-desc="${desc}" data-site="${site}" data-github="${github}">
-                            <img src="${imagem}" alt="${titulo}" class="projeto-img">
-                            <div class="projeto-info">
-                                <h3>${titulo}</h3>
-                                <div class="projeto-links">
-                                    <a href="${github}" target="_blank" class="btn-icon" title="GitHub"><i class="fab fa-github"></i></a>
-                                    <a href="${site}" target="_blank" class="btn-icon" title="Visitar Site"><i class="fas fa-external-link-alt"></i></a>
-                                    <button class="btn-open-modal">Mais Info</button>
+                        <div class="card-projeto-3d" data-titulo="${titulo}" data-desc="${desc}" data-site="${site}" data-github="${github}">
+                                <img src="${imagem}" alt="${titulo}" class="projeto-img-3d">
+                                <div class="projeto-info-3d">
+                                    <h3>${titulo}</h3>
+                                    <p style="font-size: 0.7rem; color: var(--text-muted); margin-bottom: 1px;">
+                                        ${desc.substring(0, 60)}... 
+                                        <span class="ver-mais-btn" style="color: var(--accent-blue); cursor: pointer; font-weight: 600;" onclick="abrirModalProjeto('${titulo}', '${descTratada}', '${site}', '${github}')">Ver mais</span>
+                                    </p>
+                                    <div class="projeto-links-3d">
+                                        <a href="${github}" target="_blank" style="color:#fff; font-size:1.4rem;"><i class="fab fa-github"></i></a>
+                                        <button class="btn-acessar-projeto" onclick="window.open('${site}', '_blank')">Acessar</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     `;
                 }
             });
 
-            inicializarEventosModaisEObserver();
+            listaDeProjetosCards = document.querySelectorAll('.card-projeto-3d');
+            inicializarControles3D();
         })
-        .catch(error => console.error('Erro ao carregar projetos:', error));
+        .catch(error => console.error('Erro ao carregar projetos 3D:', error));
+}
+
+function atualizarCarrossel3D() {
+    const total = listaDeProjetosCards.length;
+    if (total === 0) return;
+
+    listaDeProjetosCards.forEach((card, index) => {
+        card.classList.remove('active', 'prev', 'next');
+
+        if (index === projetoIndexAtual) {
+            card.classList.add('active');
+        } else if (index === (projetoIndexAtual - 1 + total) % total) {
+            card.classList.add('prev');
+        } else if (index === (projetoIndexAtual + 1) % total) {
+            card.classList.add('next');
+        }
+    });
+}
+
+function inicializarControles3D() {
+    const btnPrev3D = document.querySelector('.btn-projeto-prev');
+    const btnNext3D = document.querySelector('.btn-projeto-next');
+
+    if (listaDeProjetosCards.length === 0) return;
+
+    atualizarCarrossel3D();
+
+    if (btnNext3D && btnPrev3D) {
+        btnNext3D.onclick = () => {
+            projetoIndexAtual = (projetoIndexAtual + 1) % listaDeProjetosCards.length;
+            atualizarCarrossel3D();
+        };
+
+        btnPrev3D.onclick = () => {
+            projetoIndexAtual = (projetoIndexAtual - 1 + listaDeProjetosCards.length) % listaDeProjetosCards.length;
+            atualizarCarrossel3D();
+        };
+    }
 }
 
 function inicializarEventosModaisEObserver() {
@@ -212,13 +274,13 @@ function inicializarEventosModaisEObserver() {
                 modalDesc.textContent = card.dataset.desc;
                 modalSite.href = card.dataset.site;
                 modalGithub.href = card.dataset.github;
-                if(modal) modal.style.display = 'flex';
+                if (modal) modal.style.display = 'flex';
             }
         };
     });
 
     if (closeModal) {
-        closeModal.onclick = () => { if(modal) modal.style.display = 'none'; };
+        closeModal.onclick = () => { if (modal) modal.style.display = 'none'; };
     }
 
     window.onclick = (e) => {
