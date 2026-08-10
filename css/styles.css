@@ -28,9 +28,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -webkit-user-select: none; 
-    -moz-user-select: none;     
-    -ms-user-select: none;      
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
 }
 
@@ -162,12 +162,12 @@ img {
     transform: translateY(0);
 }
 
-.cards-grid .hidden:nth-child(2) { 
-    transition-delay: 0.2s; 
+.cards-grid .hidden:nth-child(2) {
+    transition-delay: 0.2s;
 }
 
-.cards-grid .hidden:nth-child(3) { 
-    transition-delay: 0.4s; 
+.cards-grid .hidden:nth-child(3) {
+    transition-delay: 0.4s;
 }
 
 
@@ -253,7 +253,7 @@ img {
     position: absolute;
     background-color: var(--bg-main);
     min-width: 180px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     padding: 3px 0;
     list-style: none;
@@ -275,7 +275,7 @@ img {
 }
 
 .dropdown-menu li a:hover {
-    background-color: #f1f1f1; 
+    background-color: #f1f1f1;
 }
 
 
@@ -291,7 +291,9 @@ img {
 }
 
 @keyframes blink {
-    50% { opacity: 0; }
+    50% {
+        opacity: 0;
+    }
 }
 
 /* Seção Hero Geral */
@@ -354,8 +356,15 @@ img {
 }
 
 @keyframes floatHeroContainer {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
 }
 
 /* Núcleo do Perfil */
@@ -398,8 +407,13 @@ img {
 }
 
 @keyframes orbitMain {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Elemento de Ícone em Órbita */
@@ -431,18 +445,43 @@ img {
 }
 
 @keyframes orbitCounter {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(-360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
 }
 
 /* Distribuição dos Ícones na Órbita */
-.gravitating-icons .orbiting-icon:nth-child(1) { transform: rotate(0deg)      translateX(200px) rotate(0deg)       !important; }
-.gravitating-icons .orbiting-icon:nth-child(2) { transform: rotate(51.4deg)   translateX(200px) rotate(-51.4deg)   !important; }
-.gravitating-icons .orbiting-icon:nth-child(3) { transform: rotate(102.8deg)  translateX(200px) rotate(-102.8deg)  !important; }
-.gravitating-icons .orbiting-icon:nth-child(4) { transform: rotate(154.2deg)  translateX(200px) rotate(-154.2deg)  !important; }
-.gravitating-icons .orbiting-icon:nth-child(5) { transform: rotate(205.6deg)  translateX(200px) rotate(-205.6deg)  !important; }
-.gravitating-icons .orbiting-icon:nth-child(6) { transform: rotate(257deg)    translateX(200px) rotate(-257deg)    !important; }
-.gravitating-icons .orbiting-icon:nth-child(7) { transform: rotate(308.4deg)  translateX(200px) rotate(-308.4deg)  !important; }
+.gravitating-icons .orbiting-icon:nth-child(1) {
+    transform: rotate(0deg) translateX(200px) rotate(0deg) !important;
+}
+
+.gravitating-icons .orbiting-icon:nth-child(2) {
+    transform: rotate(51.4deg) translateX(200px) rotate(-51.4deg) !important;
+}
+
+.gravitating-icons .orbiting-icon:nth-child(3) {
+    transform: rotate(102.8deg) translateX(200px) rotate(-102.8deg) !important;
+}
+
+.gravitating-icons .orbiting-icon:nth-child(4) {
+    transform: rotate(154.2deg) translateX(200px) rotate(-154.2deg) !important;
+}
+
+.gravitating-icons .orbiting-icon:nth-child(5) {
+    transform: rotate(205.6deg) translateX(200px) rotate(-205.6deg) !important;
+}
+
+.gravitating-icons .orbiting-icon:nth-child(6) {
+    transform: rotate(257deg) translateX(200px) rotate(-257deg) !important;
+}
+
+.gravitating-icons .orbiting-icon:nth-child(7) {
+    transform: rotate(308.4deg) translateX(200px) rotate(-308.4deg) !important;
+}
 
 
 /* ==========================================================================
@@ -500,15 +539,16 @@ img {
     color: var(--accent-blue);
 }
 
-/* --- NOVO DESIGN: CARROSSEL DE PROJETOS 3D EM PROFUNDIDADE --- */
+/* --- CARROSSEL DE PROJETOS 3D EM PROFUNDIDADE --- */
 
 .carrossel-3d-container {
     position: relative;
     width: 100%;
     max-width: 1100px;
-    height: 480px; 
+    height: 480px;
     margin: 0 auto;
-    overflow: visible; /* Garante que os cards recolhidos nas pontas apareçam */
+    overflow: visible;
+    /* Garante que os cards recolhidos nas pontas apareçam */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -521,7 +561,8 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    perspective: 1000px; /* Cria a perspectiva realista para rotação Y */
+    perspective: 1000px;
+    /* Cria a perspectiva realista para rotação Y */
 }
 
 /* Estrutura do Card 3D individual */
@@ -539,13 +580,12 @@ img {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    
-    /* Suaviza as transições tridimensionais */
-    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), 
-                opacity 0.6s ease, 
-                border-color 0.4s,
-                box-shadow 0.6s ease;
-    
+
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+        opacity 0.6s ease,
+        border-color 0.4s,
+        box-shadow 0.6s ease;
+
     opacity: 0;
     pointer-events: none;
     z-index: 0;
@@ -554,7 +594,6 @@ img {
 
 /* --- CLASSES DINÂMICAS DOS ESTADOS DO CARROSSEL 3D --- */
 
-/* Centralizado / Principal / Grande */
 .card-projeto-3d.active {
     opacity: 1;
     pointer-events: auto;
@@ -564,7 +603,6 @@ img {
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(246, 128, 59, 0.2);
 }
 
-/* Recuado para trás na Esquerda */
 .card-projeto-3d.prev {
     opacity: 0.35;
     pointer-events: auto;
@@ -572,7 +610,6 @@ img {
     transform: translateX(-55%) scale(0.78) rotateY(18deg);
 }
 
-/* Recuado para trás na Direita */
 .card-projeto-3d.next {
     opacity: 0.35;
     pointer-events: auto;
@@ -580,14 +617,12 @@ img {
     transform: translateX(55%) scale(0.78) rotateY(-18deg);
 }
 
-/* Efeito Hover do mouse em cima do card ativo (Foco Total) */
 .card-projeto-3d.active:hover {
     transform: translateX(0) scale(1.02) translateY(-5px);
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), 0 0 30px rgba(246, 128, 59, 0.3);
     border-color: var(--accent-hover);
 }
 
-/* Elementos internos do Card 3D */
 .projeto-img-3d {
     width: 100%;
     height: 210px;
@@ -617,7 +652,7 @@ img {
     margin-top: 8px;
     margin-bottom: 15px;
     display: -webkit-box;
-    -webkit-line-clamp: 2; 
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -637,7 +672,6 @@ img {
     margin-top: auto;
 }
 
-/* Botão Acessar Fixo na Base */
 .btn-acessar-projeto {
     background-color: var(--accent-blue);
     color: #fff;
@@ -662,7 +696,6 @@ img {
    6. SISTEMA DE OVERLAY (MODAL)
    ========================================================================== */
 
-/* Estrutura Geral do Modal */
 .modal {
     display: none;
     position: fixed;
@@ -677,7 +710,6 @@ img {
     justify-content: center;
 }
 
-/* Bloco Interno de Conteúdo */
 .modal-content {
     background-color: var(--bg-darker);
     padding: 40px;
@@ -694,13 +726,13 @@ img {
         transform: translateY(40px);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
     }
 }
 
-/* Elemento de Fechamento */
 .close-modal {
     position: absolute;
     right: 20px;
@@ -715,7 +747,6 @@ img {
     color: var(--accent-blue);
 }
 
-/* Título e Texto do Modal */
 #modal-title {
     margin-bottom: 20px;
     font-size: 1.8rem;
@@ -726,7 +757,6 @@ img {
     line-height: 1.6;
 }
 
-/* Botões de Ação do Modal */
 .modal-actions {
     display: flex;
     gap: 15px;
@@ -738,7 +768,6 @@ img {
    7. SEÇÃO DE DEPOIMENTOS E CARROSSEL
    ========================================================================== */
 
-/* Card de Depoimento */
 .depoimento-card-v2 {
     background: rgba(26, 26, 26, 0.6);
     backdrop-filter: blur(12px);
@@ -788,7 +817,6 @@ img {
     font-weight: 300;
 }
 
-/* Aspas Decorativas do Fundo */
 .quote-icon {
     position: absolute;
     top: 15px;
@@ -807,7 +835,6 @@ img {
     opacity: 0.15;
 }
 
-/* Dados do Cliente */
 .cliente-info {
     display: flex;
     align-items: center;
@@ -844,7 +871,6 @@ img {
     transition: color 0.3s;
 }
 
-/* Logo Corporativa no Depoimento */
 .empresa-logo {
     width: 52px;
     height: 52px;
@@ -855,7 +881,7 @@ img {
     justify-content: center;
     padding: 8px;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s;
 }
 
@@ -887,7 +913,7 @@ img {
 .carrossel-container {
     overflow: hidden;
     width: 100%;
-    padding: 15px 0; 
+    padding: 15px 0;
     margin: -15px 0;
 }
 
@@ -899,12 +925,13 @@ img {
     width: 100%;
 }
 
+/* Card dentro do carrossel: mobile-first, 1 por tela */
 .carrossel-track .depoimento-card-v2 {
+    flex: 0 0 100%;
+    box-sizing: border-box;
     transform: none !important;
     opacity: 1 !important;
     transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.3s, box-shadow 0.3s !important;
-    flex: 0 0 100%;
-    box-sizing: border-box;
 }
 
 .carrossel-track .depoimento-card-v2:hover {
@@ -936,12 +963,12 @@ img {
     background: var(--bg-main);
 }
 
-.btn-prev { 
-    left: 0; 
+.btn-prev {
+    left: 0;
 }
 
-.btn-next { 
-    right: 0; 
+.btn-next {
+    right: 0;
 }
 
 
@@ -949,7 +976,6 @@ img {
    8. RODAPÉ E REDES SOCIAIS
    ========================================================================== */
 
-/* Rodapé Base */
 .footer {
     text-align: center;
     padding: 30px 0;
@@ -958,7 +984,6 @@ img {
     font-size: 0.9rem;
 }
 
-/* Alinhamento de Mídias Sociais */
 .social-links {
     display: flex;
     gap: 20px;
@@ -978,7 +1003,6 @@ img {
     display: inline-block;
 }
 
-/* Botão do Link Social */
 .social-btn {
     position: relative;
     display: inline-flex;
@@ -1000,7 +1024,6 @@ img {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Efeito do Símbolo Fantasma de Fundo */
 .social-btn::before {
     position: absolute;
     font-family: "Font Awesome 5 Brands";
@@ -1019,19 +1042,16 @@ img {
     right: 5px;
 }
 
-/* Símbolo do GitHub */
 .social-btn.github::before {
     content: "\f09b";
     color: rgba(255, 255, 255, 0.15);
 }
 
-/* Símbolo do LinkedIn */
 .social-btn.linkedin::before {
     content: "\f08c";
     color: rgba(0, 119, 181, 0.25);
 }
 
-/* Símbolo do Instagram */
 .social-btn.instagram::before {
     content: "\f16d";
     color: rgba(225, 48, 108, 0.25);
@@ -1042,7 +1062,6 @@ img {
    9. SELETOR E GERENCIADOR DE TEMAS
    ========================================================================== */
 
-/* Quadro de Temas */
 .theme-panel {
     position: fixed;
     top: 115px;
@@ -1062,7 +1081,6 @@ img {
     right: 0;
 }
 
-/* Botão Gatilho do Painel */
 .panel-toggle {
     position: absolute;
     left: -45px;
@@ -1078,14 +1096,12 @@ img {
     font-size: 1.2rem;
 }
 
-/* Alinhamento das Bolinhas de Cores */
 .color-options {
     display: flex;
     justify-content: space-around;
     margin-top: 10px;
 }
 
-/* Seletor Circular de Cor */
 .color-dot {
     width: 30px;
     height: 30px;
@@ -1099,48 +1115,51 @@ img {
     transform: scale(1.1);
 }
 
-/* Temas Cromáticos Específicos */
-.color-orange { background: #f6803b; }
-.color-green  { background: #289424; }
-.color-blue   { background: #3b76f6; }
-.color-red    { background: #bb2424; }
+.color-orange {
+    background: #f6803b;
+}
+
+.color-green {
+    background: #289424;
+}
+
+.color-blue {
+    background: #3b76f6;
+}
+
+.color-red {
+    background: #bb2424;
+}
 
 
 /* ==========================================================================
    10. REGRAS DE MEDIA QUERIES (RESPONSIVIDADE)
    ========================================================================== */
 
+/* --- Tablet / desktop pequeno: 2 depoimentos por view --- */
 @media (min-width: 768px) {
     .carrossel-track .depoimento-card-v2 {
         flex: 0 0 calc(50% - 15px);
     }
-
-    .depoimento-card-v2 {
-       padding: 28px 22px;
-    }
-
-    .carrosel-wrapper {
-       padding: 0 30px;
-    }
-
-   .quote-icon {
-      font-size: 3.5rem;
 }
 
+/* --- Ajustes gerais de layout em telas médias (tablets) --- */
 @media (max-width: 992px) {
     .hero-container {
         flex-direction: column;
         text-align: center;
     }
+
     .hero-content h1 {
         font-size: 2.5rem;
     }
+
     .hero-image {
         justify-content: center;
         margin-top: 60px;
         width: 100%;
     }
-    
+
     /* Trata tamanho do card 3D em telas médias */
     .card-projeto-3d {
         width: 380px;
@@ -1148,6 +1167,7 @@ img {
     }
 }
 
+/* --- Ajustes gerais em telas de celular --- */
 @media (max-width: 768px) {
     .header .container {
         flex-direction: row;
@@ -1213,29 +1233,82 @@ img {
         margin-left: -17.5px;
     }
 
-    .gravitating-icons .orbiting-icon:nth-child(1) { transform: rotate(0deg)       translateX(132.5px) rotate(0deg)       !important; }
-    .gravitating-icons .orbiting-icon:nth-child(2) { transform: rotate(51.4deg)   translateX(132.5px) rotate(-51.4deg)   !important; }
-    .gravitating-icons .orbiting-icon:nth-child(3) { transform: rotate(102.8deg)  translateX(132.5px) rotate(-102.8deg)  !important; }
-    .gravitating-icons .orbiting-icon:nth-child(4) { transform: rotate(154.2deg)  translateX(132.5px) rotate(-154.2deg)  !important; }
-    .gravitating-icons .orbiting-icon:nth-child(5) { transform: rotate(205.6deg)  translateX(132.5px) rotate(-205.6deg)  !important; }
-    .gravitating-icons .orbiting-icon:nth-child(6) { transform: rotate(257deg)    translateX(132.5px) rotate(-257deg)    !important; }
-    .gravitating-icons .orbiting-icon:nth-child(7) { transform: rotate(308.4deg)  translateX(132.5px) rotate(-308.4deg)  !important; }
+    .gravitating-icons .orbiting-icon:nth-child(1) {
+        transform: rotate(0deg) translateX(132.5px) rotate(0deg) !important;
+    }
+
+    .gravitating-icons .orbiting-icon:nth-child(2) {
+        transform: rotate(51.4deg) translateX(132.5px) rotate(-51.4deg) !important;
+    }
+
+    .gravitating-icons .orbiting-icon:nth-child(3) {
+        transform: rotate(102.8deg) translateX(132.5px) rotate(-102.8deg) !important;
+    }
+
+    .gravitating-icons .orbiting-icon:nth-child(4) {
+        transform: rotate(154.2deg) translateX(132.5px) rotate(-154.2deg) !important;
+    }
+
+    .gravitating-icons .orbiting-icon:nth-child(5) {
+        transform: rotate(205.6deg) translateX(132.5px) rotate(-205.6deg) !important;
+    }
+
+    .gravitating-icons .orbiting-icon:nth-child(6) {
+        transform: rotate(257deg) translateX(132.5px) rotate(-257deg) !important;
+    }
+
+    .gravitating-icons .orbiting-icon:nth-child(7) {
+        transform: rotate(308.4deg) translateX(132.5px) rotate(-308.4deg) !important;
+    }
 
     /* Reduz o deslocamento do 3D no mobile para não cortar nas bordas */
     .carrossel-3d-container {
         height: 420px;
     }
+
     .card-projeto-3d {
         width: 290px;
         height: 340px;
     }
+
     .card-projeto-3d.prev {
         transform: translateX(-35%) scale(0.7) rotateY(10deg);
     }
+
     .card-projeto-3d.next {
         transform: translateX(35%) scale(0.7) rotateY(-10deg);
     }
+
     .projeto-img-3d {
         height: 160px;
+    }
+
+    /* Depoimentos: aperta o wrapper pros botões não invadirem o card */
+    .carrossel-wrapper {
+        padding: 0 40px;
+    }
+}
+
+/* --- Celulares pequenos: aperta ainda mais o card de depoimento --- */
+@media (max-width: 480px) {
+    .depoimento-card-v2 {
+        padding: 28px 22px;
+    }
+
+    .carrossel-wrapper {
+        padding: 0 30px;
+    }
+
+    .quote-icon {
+        font-size: 3.5rem;
+    }
+
+    .cliente-info {
+        gap: 10px;
+    }
+
+    .empresa-logo {
+        width: 44px;
+        height: 44px;
     }
 }
