@@ -903,6 +903,8 @@ img {
     transform: none !important;
     opacity: 1 !important;
     transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.3s, box-shadow 0.3s !important;
+    flex: 0 0 100%;
+    box-sizing: border-box;
 }
 
 .carrossel-track .depoimento-card-v2:hover {
@@ -1112,6 +1114,17 @@ img {
     .carrossel-track .depoimento-card-v2 {
         flex: 0 0 calc(50% - 15px);
     }
+
+    .depoimento-card-v2 {
+       padding: 28px 22px;
+    }
+
+    .carrosel-wrapper {
+       padding: 0 30px;
+    }
+
+   .quote-icon {
+      font-size: 3.5rem;
 }
 
 @media (max-width: 992px) {
