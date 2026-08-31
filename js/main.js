@@ -7,39 +7,43 @@ let track = null;
 let projetoIndexAtual = 0;
 let listaDeProjetosCards = [];
 
+// Variáveis do efeito de digitação (globais, para o i18n.js poder trocar as frases)
+window.phrases = ["soluções web inteligentes.", "automações eficientes.", "interfaces modernas.", "resultados reais."];
+window.phraseIndex = 0;
+window.charIndex = 0;
+window.isDeleting = false;
+
+function typeEffect() {
+    const textElement = document.getElementById('typing-text');
+    if (!textElement) return;
+    const currentPhrase = window.phrases[window.phraseIndex];
+
+    if (window.isDeleting) {
+        textElement.textContent = currentPhrase.substring(0, window.charIndex - 1);
+        window.charIndex--;
+    } else {
+        textElement.textContent = currentPhrase.substring(0, window.charIndex + 1);
+        window.charIndex++;
+    }
+
+    let typeSpeed = window.isDeleting ? 50 : 90;
+
+    if (!window.isDeleting && window.charIndex === currentPhrase.length) {
+        typeSpeed = 2000;
+        window.isDeleting = true;
+    } else if (window.isDeleting && window.charIndex === 0) {
+        window.isDeleting = false;
+        window.phraseIndex = (window.phraseIndex + 1) % window.phrases.length;
+        typeSpeed = 500;
+    }
+    setTimeout(typeEffect, typeSpeed);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     carregarDepoimentosDaPlanilha();
     carregarProjetosDaPlanilha();
     inicializarEventosModaisEObserver(); // Ativa as funções para fechar e escutar cliques do modal ao iniciar
 
-    const textElement = document.getElementById('typing-text');
-    const phrases = ["soluções web inteligentes.", "automações eficientes.", "interfaces modernas.", "resultados reais."];
-    let phraseIndex = 0, charIndex = 0, isDeleting = false;
-
-    function typeEffect() {
-        if (!textElement) return;
-        const currentPhrase = phrases[phraseIndex];
-
-        if (isDeleting) {
-            textElement.textContent = currentPhrase.substring(0, charIndex - 1);
-            charIndex--;
-        } else {
-            textElement.textContent = currentPhrase.substring(0, charIndex + 1);
-            charIndex++;
-        }
-
-        let typeSpeed = isDeleting ? 50 : 90;
-
-        if (!isDeleting && charIndex === currentPhrase.length) {
-            typeSpeed = 2000;
-            isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            phraseIndex = (phraseIndex + 1) % phrases.length;
-            typeSpeed = 500;
-        }
-        setTimeout(typeEffect, typeSpeed);
-    }
     typeEffect();
 
     const mobileMenu = document.getElementById('mobile-menu');
@@ -90,12 +94,12 @@ document.addEventListener('DOMContentLoaded', () => {
 function abrirModalProjeto(titulo, descricao, siteUrl, githubUrl) {
     const modal = document.getElementById('project-modal');
     if (!modal) return;
-    
+
     document.getElementById('modal-title').innerText = titulo;
     document.getElementById('modal-description').innerText = descricao;
     document.getElementById('modal-site').href = siteUrl;
     document.getElementById('modal-github').href = githubUrl;
-    
+
     modal.style.display = 'flex';
 }
 
@@ -185,6 +189,10 @@ function carregarProjetosDaPlanilha() {
                     const status = columns[5] ? columns[5].toLowerCase() : 'inativo';
                     if (status !== 'ativo') return;
 
+                    // NOVO: só entra no carrossel de destaque da home quem tiver "SIM" na coluna G (índice 6)
+                    const destaque = columns[6] ? columns[6].toLowerCase() : 'nao';
+                    if (destaque !== 'sim') return;
+
                     const titulo = columns[0];
                     const desc = columns[1];
                     const site = columns[2];
@@ -194,7 +202,6 @@ function carregarProjetosDaPlanilha() {
                     // Limpa quebras de linha e aspas para o parâmetro não quebrar a string do Javascript
                     const descTratada = desc.replace(/'/g, "\\'").replace(/\r?\n/g, " ");
 
-                    // Alterado margin-bottom de 15px para 5px para subir os botões!
                     container.innerHTML += `
                         <div class="card-projeto-3d" data-titulo="${titulo}" data-desc="${desc}" data-site="${site}" data-github="${github}">
                                 <img src="${imagem}" alt="${titulo}" class="projeto-img-3d">

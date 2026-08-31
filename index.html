@@ -7,6 +7,7 @@
     <title>Brendow Rodrigues | Desenvolvimento Web & Automação Corporativa</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.2.3/css/flag-icons.min.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,12 +21,21 @@
     <div class="theme-panel">
         <button class="panel-toggle"><i class="fas fa-cog"></i></button>
         <div class="panel-content">
-            <h4>Personalize!</h4>
+            <h4 data-i18n="personalize_title">Personalize!</h4>
             <div class="color-options">
                 <span class="color-dot color-orange" data-color="orange" title="Laranja"></span>
                 <span class="color-dot color-green" data-color="green" title="Verde"></span>
                 <span class="color-dot color-blue" data-color="blue" title="Azul"></span>
                 <span class="color-dot color-red" data-color="red" title="Vermelho"></span>
+            </div>
+
+            <h4 data-i18n="idioma_title" style="margin-top:15px;">Idioma</h4>
+            <div class="lang-options">
+                <span class="lang-flag fi fi-br active" data-lang="pt-BR" title="Português (Brasil)"></span>
+                <span class="lang-flag fi fi-pt" data-lang="pt-PT" title="Português (Portugal)"></span>
+                <span class="lang-flag fi fi-us" data-lang="en-US" title="English (US)"></span>
+                <span class="lang-flag fi fi-gb" data-lang="en-GB" title="English (UK)"></span>
+                <span class="lang-flag fi fi-es" data-lang="es" title="Español"></span>
             </div>
         </div>
     </div>
@@ -42,18 +52,19 @@
 
             <nav class="navbar">
                 <ul class="nav-links">
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#projetos">Projetos</a></li>
-                    <li><a href="#depoimentos">Depoimentos</a></li>
+                    <li><a href="#sobre" data-i18n="nav_sobre">Sobre</a></li>
+                    <li><a href="#servicos" data-i18n="nav_servicos">Serviços</a></li>
+                    <li><a href="projetos.html" data-i18n="nav_projetos">Projetos</a></li>
+                    <li><a href="#depoimentos" data-i18n="nav_depoimentos">Depoimentos</a></li>
 
                     <li class="dropdown">
-                        <a href="#" class="btn btn-outline dropdown-toggle">Contato & Mais</a>
+                        <a href="#" class="btn btn-outline dropdown-toggle" data-i18n="contato_mais">Contato & Mais</a>
                         <ul class="dropdown-menu">
                             <li><a href="https://wa.me/5545999767851?text=Olá,%20Brendow!%20Vim%20pelo%20seu%20portfólio%20e%20queria%20falar%20sobre%20um%20projeto."
-                                    target="_blank">Fale Comigo</a></li>
-                            <li><a href="https://forms.gle/fYm15AUL8DuZ1ckYA">Me Avalie</a></li>
-                            <li><a href="/assets/docs/Currículo.pdf" target="_blank">Meu Currículo</a></li>
+                                    target="_blank" data-i18n="fale_comigo">Fale Comigo</a></li>
+                            <li><a href="#avaliacao" data-i18n="me_avalie">Me Avalie</a></li>
+                            <li><a href="/assets/docs/Currículo.pdf" target="_blank" data-i18n="meu_curriculo">Meu
+                                    Currículo</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -64,12 +75,13 @@
     <section id="sobre" class="hero-section">
         <div class="container hero-container">
             <div class="hero-content">
-                <h1>Transformo processos em <br><span id="typing-text" class="highlight"></span><span
-                        class="cursor">|</span></h1>
-                <p>Desenvolvimento de sistemas web, automação de processos e integrações com Google Sheets (Apps
-                    Script). Código limpo, interfaces funcionais e foco em eficiência e resultados reais.</p>
+                <h1><span data-i18n="hero_title">Transformo processos em</span> <br><span id="typing-text"
+                        class="highlight"></span><span class="cursor">|</span></h1>
+                <p data-i18n="hero_p">Desenvolvimento de sistemas web, automação de processos e integrações com Google
+                    Sheets (Apps Script). Código limpo, interfaces funcionais e foco em eficiência e resultados reais.
+                </p>
                 <a href="https://wa.me/5545999767851?text=Olá,%20Brendow!%20Vim%20pelo%20seu%20portfólio%20e%20queria%20falar%20sobre%20um%20projeto."
-                    target="_blank" class="btn btn-primary">Iniciar um Projeto</a>
+                    target="_blank" class="btn btn-primary" data-i18n="hero_btn">Iniciar um Projeto</a>
             </div>
 
             <div class="hero-image">
@@ -113,46 +125,35 @@
 
     <section id="servicos" class="servicos-section section-padding bg-darker">
         <div class="container">
-            <h2 class="section-title">Meus Serviços</h2>
+            <h2 class="section-title" data-i18n="servicos_title">Meus Serviços</h2>
             <div class="cards-grid">
                 <div class="card">
-                    <div class="icon-box">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Desenvolvimento Web</h3>
-                    <p>Criação de sites e landing pages modernas, responsivas e otimizadas para desempenho e conversão.
-                    </p>
+                    <div class="icon-box"><i class="fas fa-code"></i></div>
+                    <h3 data-i18n="servico1_titulo">Desenvolvimento Web</h3>
+                    <p data-i18n="servico1_desc">Criação de sites e landing pages modernas, responsivas e otimizadas
+                        para desempenho e conversão.</p>
                 </div>
-
                 <div class="card">
-                    <div class="icon-box">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>Sistemas Web</h3>
-                    <p>Desenvolvimento de aplicações web personalizadas para gestão, organização de dados e soluções sob
-                        medida para o seu negócio.</p>
+                    <div class="icon-box"><i class="fas fa-laptop-code"></i></div>
+                    <h3 data-i18n="servico2_titulo">Sistemas Web</h3>
+                    <p data-i18n="servico2_desc">Desenvolvimento de aplicações web personalizadas para gestão,
+                        organização de dados e soluções sob medida para o seu negócio.</p>
                 </div>
-
                 <div class="card">
-                    <div class="icon-box">
-                        <i class="fas fa-gears"></i>
-                    </div>
-                    <h3>Automação & Integração</h3>
-                    <p>Automação de processos e integrações com Google Sheets, dashboards e fluxos digitais para
-                        aumentar produtividade.</p>
+                    <div class="icon-box"><i class="fas fa-gears"></i></div>
+                    <h3 data-i18n="servico3_titulo">Automação & Integração</h3>
+                    <p data-i18n="servico3_desc">Automação de processos e integrações com Google Sheets, dashboards e
+                        fluxos digitais para aumentar produtividade.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="projetos" style="position: relative; padding: 60px 0;">
-
-        <h2 class="section-title">Meus Projetos em Destaque</h2>
-        
+        <h2 class="section-title" data-i18n="projetos_title">Meus Projetos em Destaque</h2>
         <div class="carrossel-3d-container">
             <div class="carrossel-3d-track" id="projetos-container"></div>
         </div>
-
         <div class="controles-projetos" style="text-align: center; margin-top: 20px;">
             <button class="btn-projeto-prev"
                 style="background:none; border:1px solid var(--accent-blue); color:#fff; padding:10px 20px; margin-right:15px; cursor:pointer; border-radius:5px;"><i
@@ -161,7 +162,9 @@
                 style="background:none; border:1px solid var(--accent-blue); color:#fff; padding:10px 20px; cursor:pointer; border-radius:5px;"><i
                     class="fas fa-chevron-right"></i></button>
         </div>
-
+        <div style="text-align:center; margin-top:25px;">
+            <a href="projetos.html" class="btn btn-outline" data-i18n="ver_todos">Ver todos os projetos</a>
+        </div>
     </section>
 
     <div id="project-modal" class="modal">
@@ -170,7 +173,8 @@
             <h2 id="modal-title">Título do Projeto</h2>
             <p id="modal-description">Descrição aqui...</p>
             <div class="modal-actions">
-                <a href="#" id="modal-site" target="_blank" class="btn btn-primary">Acessar Site</a>
+                <a href="#" id="modal-site" target="_blank" class="btn btn-primary" data-i18n="modal_acessar">Acessar
+                    Site</a>
                 <a href="#" id="modal-github" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i>
                     GitHub</a>
             </div>
@@ -209,10 +213,11 @@
                 </a>
             </div>
             <br>
-            <p>&copy; 2026 - 2030 Brendow Rodrigues. Todos os direitos reservados.</p>
+            <p data-i18n="footer_direitos">&copy; 2026 - 2030 Brendow Rodrigues. Todos os direitos reservados.</p>
         </div>
     </footer>
 
+    <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
     <script>
         // Bloqueia o clique com o botão direito do mouse

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos os Projetos | Brendow Rodrigues</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.2.3/css/flag-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <div class="theme-panel">
+        <button class="panel-toggle"><i class="fas fa-cog"></i></button>
+        <div class="panel-content">
+            <h4 data-i18n="personalize_title">Personalize!</h4>
+            <div class="color-options">
+                <span class="color-dot color-orange" data-color="orange" title="Laranja"></span>
+                <span class="color-dot color-green" data-color="green" title="Verde"></span>
+                <span class="color-dot color-blue" data-color="blue" title="Azul"></span>
+                <span class="color-dot color-red" data-color="red" title="Vermelho"></span>
+            </div>
+            <h4 data-i18n="idioma_title" style="margin-top:15px;">Idioma</h4>
+            <div class="lang-options">
+                <span class="lang-flag fi fi-br active" data-lang="pt-BR" title="Português (Brasil)"></span>
+                <span class="lang-flag fi fi-pt" data-lang="pt-PT" title="Português (Portugal)"></span>
+                <span class="lang-flag fi fi-us" data-lang="en-US" title="English (US)"></span>
+                <span class="lang-flag fi fi-gb" data-lang="en-GB" title="English (UK)"></span>
+                <span class="lang-flag fi fi-es" data-lang="es" title="Español"></span>
+            </div>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo"><span>Dev</span>Brendown</a>
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="index.html" data-i18n="voltar_home">← Voltar para a home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="section-title" data-i18n="projetos_pagina_titulo">Todos os Projetos</h2>
+            <div class="projetos-grid" id="todos-projetos-container"></div>
+        </div>
+    </section>
+
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-title">Título do Projeto</h2>
+            <p id="modal-description">Descrição aqui...</p>
+            <div class="modal-actions">
+                <a href="#" id="modal-site" target="_blank" class="btn btn-primary" data-i18n="modal_acessar">Acessar Site</a>
+                <a href="#" id="modal-github" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p data-i18n="footer_direitos">&copy; 2026 - 2030 Brendow Rodrigues. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/projetos.js"></script>
+    <script>
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+            if (e.ctrlKey && (e.key === 'c' || e.key === 'u')) e.preventDefault();
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) e.preventDefault();
+        });
+    </script>
+</body>
+</html>
